@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.northwind.business.abstracts.ProductService;
@@ -38,5 +39,18 @@ public class ProdutcsController {
 		return this.productService.add(product);
 	}
 	
+	
+	@GetMapping("/getByProductName")
+	public DataResults<Product> getByProductName(@RequestParam String productName){
+		return this.productService.getByProductName(productName);
+	}
+	
+	
+	@GetMapping("/getByProductNameAndCategoryId")
+	public DataResults<Product>
+	getByProductNameAndCategoryId(@RequestParam String productName, int categoryId) {
+		return this.productService.getByProductNameAndCategoryId
+				(productName,categoryId);
+	}
 	
 }
